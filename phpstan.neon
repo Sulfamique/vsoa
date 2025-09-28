@@ -1,0 +1,13 @@
+includes:
+  - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+
+parameters:
+  level: 6
+  paths:
+    - plugin-main.php
+    - src
+  tmpDir: var/phpstan
+  parallel:
+    maximumNumberOfProcesses: 4
+  ignoreErrors:
+    - '#Function wp_#'
