@@ -108,6 +108,15 @@ delete_option( self::AGGREGATE_OPTION );
 }
 
 /**
+ * Retourne le nombre d'évènements en file.
+ */
+public static function get_queue_size(): int {
+$queue = get_transient( self::QUEUE_TRANSIENT );
+
+return is_array( $queue ) ? count( $queue ) : 0;
+}
+
+/**
  * Hash pseudonymisé.
  */
 private static function hash_identifier( string $value ): string {

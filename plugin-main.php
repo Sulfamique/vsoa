@@ -129,6 +129,10 @@ wp_safe_redirect( home_url( '/' ) );
 exit;
 }
 
+if ( isset( $payload['value'] ) && class_exists( '\\Vsoa\\Stats\\StatsCollector' ) ) {
+\Vsoa\Stats\StatsCollector::track( 'redirect', [ 'value' => (string) $payload['value'] ] );
+}
+
 wp_safe_redirect( esc_url_raw( (string) $payload['target'] ) );
 exit;
 }
